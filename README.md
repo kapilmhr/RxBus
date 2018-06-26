@@ -75,8 +75,23 @@ bus.post(new SomeEvent("Message"));
 
 Gradle:
 
+Add it in your root build.gradle at the end of repositories:
+
+``` allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
 ```
-compile 'com.github.anadea:rxbus:1.0.1'
+    
+    # Add your dependency
+    
+``` 
+ {
+	        implementation 'com.github.kapilmhr:RxBus:1.0'
+	}
 ```
 
 ProGuard
