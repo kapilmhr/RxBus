@@ -33,7 +33,7 @@ Gradle:
 
 Add it in your root build.gradle at the end of repositories:
 
-``` allprojects {
+```java allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
@@ -65,7 +65,7 @@ Bus bus = BusProvider.getInstance();
 
 To subscribe to an event, declare and annotate a method with @Subscribe. The method should be public and take only a single parameter.
 
-```
+```java
 @Subscribe
 public void onEvent(SomeEvent event) {
     // TODO: Do something
@@ -74,7 +74,7 @@ public void onEvent(SomeEvent event) {
 
 You can also create subscription like following:
 
-```
+```java
 CustomSubscriber<SomeEvent> customSubscriber = bus.obtainSubscriber(SomeEvent.class,
     new Consumer<SomeEvent>() {
         @Override
@@ -95,18 +95,18 @@ CustomSubscriber<SomeEvent> customSubscriber = bus.obtainSubscriber(SomeEvent.cl
 
 To receive events, a class instance needs to register with the bus.
 
-```
+```java
 bus.register(this);
 ```
 
 The customSubscriber also needs to register with the bus.
 
-```
+```java
 bus.registerSubscriber(this, customSubscriber);
 ```
 
 Remember to also call the unregister method when appropriate.
-```
+```java
 bus.unregister(this);
 ```
 
@@ -114,7 +114,7 @@ bus.unregister(this);
 
 To publish a new event, call the post method:
 
-```
+```java
 bus.post(new SomeEvent("Message"));
 ```
 
@@ -124,7 +124,7 @@ ProGuard
 
 If you are using ProGuard, add the following lines to your ProGuard configuration file.
 
-```
+```java
 -keepattributes *Annotation*
 -keepclassmembers class ** {
     @app.frantic.mylibrary.Subscribe public *;
